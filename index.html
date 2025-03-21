@@ -4,38 +4,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playit: Your Gaming Universe</title>
+    <title>Playit: Cyberpunk Gaming Universe</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            background: linear-gradient(45deg, #1a0a2a, #0a1a2a);
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        @keyframes subtle-neon-flicker {
+            0%, 100% {
+                text-shadow: 
+                    0 0 3px rgba(0,191,255,0.5),
+                    0 0 6px rgba(255,20,147,0.5);
+                opacity: 1;
+            }
+            50% {
+                text-shadow: none;
+                opacity: 0.9;
+            }
+        }
+
+        .playit-logo {
+            font-family: 'Arial Rounded MT Bold', Arial, sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00bfff, #ff1493);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: subtle-neon-flicker 3s infinite;
+            cursor: pointer;
+            line-height: 40px;
+        }
+
         .language-toggle {
             position: relative;
-            width: 60px;
+            width: 50px;
             height: 34px;
-            background-color: #ccc;
+            background-color: #2a1a3a;
             border-radius: 34px;
+            border: 2px solid #ff1493;
             cursor: pointer;
+            display: flex;  
+            align-items: center;  
+            justify-content: center;  
         }
+
         .language-toggle-slider {
-            position: absolute;
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background-color: white;
-            top: 4px;
-            left: 4px;
+            background: linear-gradient(135deg, #ff1493, #ff4500);
             transition: 0.4s;
+            position: absolute;  
+            left: 2px;  
         }
+
         .language-toggle input:checked + .language-toggle-slider {
-            transform: translateX(26px);
+            transform: translateX(22px);  
+            background: linear-gradient(135deg, #00bfff, #1e90ff);
+        }
+
+        .cyberpunk-container {
+            background: rgba(20, 10, 40, 0.7);
+            border: 2px solid #ff1493;
+            box-shadow: 
+                0 0 15px #ff1493,
+                inset 0 0 20px rgba(255, 20, 147, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            padding-top: 70%; 
+        }
+
+        .game-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ff1493;
+            box-shadow: 
+                0 0 10px #ff1493,
+                inset 0 0 15px rgba(255, 20, 147, 0.3);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .game-frame iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .scanner-line {
+            position: fixed;
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #00bfff, transparent);
+            animation: scanner 3s linear infinite;
+            opacity: 0.3;
+            z-index: 50;
+        }
+
+        @keyframes scanner {
+            0% { top: -50%; }
+            100% { top: 150%; }
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-black text-gray-200 relative">
+    <div class="scanner-line"></div>
     <div class="container mx-auto max-w-3xl p-4">
-        <!-- 语言切换 -->
-        <div class="flex justify-end mb-4">
+        <div class="flex justify-between items-center mb-4">
+            <div class="playit-logo">Playit</div>
             <label class="flex items-center cursor-pointer">
-                <span class="mr-2">EN</span>
+                <span class="mr-2 text-pink-400 text-xs">EN</span>
                 <div class="language-toggle relative">
                     <input 
                         type="checkbox" 
@@ -44,55 +137,55 @@
                     >
                     <div class="language-toggle-slider"></div>
                 </div>
-                <span class="ml-2">中</span>
+                <span class="ml-2 text-blue-400 text-xs">中</span>
             </label>
         </div>
 
-        <!-- 主内容 -->
-        <div class="bg-white shadow-md rounded-lg p-6">
+        <div class="cyberpunk-container rounded-lg p-6">
             <h1 
                 id="mainTitle" 
-                class="text-4xl font-bold text-center mb-4 text-blue-600"
+                class="text-4xl font-bold text-center mb-4 text-blue-300"
             >
-                Playit: Your Gaming Universe
+                Playit: Cyberpunk Gaming Universe
             </h1>
 
             <p 
                 id="siteDescription" 
-                class="text-center text-gray-600 mb-6"
+                class="text-center text-pink-300 mb-6"
             >
-                Your ultimate destination for free online games
+                Your ultimate destination for free online cyber games
             </p>
 
-            <!-- 游戏区域 -->
-            <div class="mb-6">
-                <h2 
-                    id="gameTitle" 
-                    class="text-2xl font-semibold text-center mb-4"
-                >
-                    Play Count Masters
-                </h2>
+            <div class="mb-6 flex justify-center items-center">
+                <div class="w-full max-w-2xl">
+                    <h2 
+                        id="gameTitle" 
+                        class="text-2xl font-semibold text-center mb-4 text-blue-300"
+                    >
+                        Play Count Masters
+                    </h2>
 
-                <div class="aspect-video">
-                    <iframe 
-                        src="https://games.crazygames.com/en_US/count-masters-stickman-games/index.html?skipPrerollFirstSessionExp25=true&v=1.326" 
-                        class="w-full h-full rounded-lg"
-                        allowfullscreen
-                    ></iframe>
+                    <div class="game-container">
+                        <div class="game-frame">
+                            <iframe 
+                                src="https://games.crazygames.com/en_US/count-masters-stickman-games/index.html?skipPrerollFirstSessionExp25=true&v=1.326" 
+                                allowfullscreen
+                            ></iframe>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- 游戏描述 -->
             <div>
                 <h3 
                     id="gameDescriptionTitle" 
-                    class="text-xl font-semibold mb-2"
+                    class="text-xl font-semibold mb-2 text-blue-300"
                 >
                     About the Game
                 </h3>
                 <p 
                     id="gameDescription" 
-                    class="text-gray-700"
+                    class="text-pink-300"
                 >
                     Count Masters is an exciting stickman running game where you lead a crowd of stickmen through challenging obstacles. 
                     Grow your team, overcome barriers, and compete against other stickman armies in this thrilling action-packed game!
@@ -105,39 +198,35 @@
         // 语言内容配置
         const languageContent = {
             en: {
-                mainTitle: 'Playit: Your Gaming Space',
-                siteDescription: 'Your ultimate destination for free online games',
+                mainTitle: 'Playit: Cyberpunk Gaming Universe',
+                siteDescription: 'Your ultimate destination for free online cyber games',
                 gameTitle: 'Play Count Masters',
                 gameDescriptionTitle: 'About the Game',
-                gameDescription: 'Count Masters is an exciting stickman running game where you lead a crowd of stickmen through challenging obstacles. Grow your team, overcome barriers, and compete against other stickman armies in this thrilling action-packed game!'
+                gameDescription: 'Count Masters is an exciting stickman running game where you lead a crowd of stickmen through challenging obstacles. Grow your team, overcome barriers, and compete against other stickman armies in this thrilling action-packed game!',
             },
             zh: {
-                mainTitle: 'Playit：你的游戏空间',
-                siteDescription: '免费在线游戏的终极目的地',
+                mainTitle: 'Playit：赛博朋克游戏宇宙',
+                siteDescription: '免费在线赛博游戏的终极目的地',
                 gameTitle: '玩转火柴人大作战',
                 gameDescriptionTitle: '关于游戏',
-                gameDescription: 'Count Masters 是一款激动人心的火柴人跑步游戏，你将引领一群火柴人穿越充满挑战的障碍。扩大你的团队，克服障碍，在这个充满动作的游戏中与其他火柴人军队展开竞争！'
+                gameDescription: 'Count Masters 是一款激动人心的火柴人跑步游戏，你将引领一群火柴人穿越充满挑战的障碍。扩大你的团队，克服障碍，在这个充满动作的游戏中与其他火柴人军队展开竞争！',
             }
         };
 
-        // 语言切换函数
         function toggleLanguage() {
             const toggle = document.getElementById('languageToggle');
             const lang = toggle.checked ? 'zh' : 'en';
             const content = languageContent[lang];
 
-            // 更新页面文案
             document.getElementById('mainTitle').textContent = content.mainTitle;
             document.getElementById('siteDescription').textContent = content.siteDescription;
             document.getElementById('gameTitle').textContent = content.gameTitle;
             document.getElementById('gameDescriptionTitle').textContent = content.gameDescriptionTitle;
             document.getElementById('gameDescription').textContent = content.gameDescription;
 
-            // 更新页面语言属性
             document.documentElement.lang = lang;
         }
 
-        // 添加事件监听器
         document.getElementById('languageToggle').addEventListener('change', toggleLanguage);
     </script>
 </body>
