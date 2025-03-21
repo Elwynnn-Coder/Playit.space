@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playit: Your Gaming Universe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .language-toggle {
+            position: relative;
+            width: 60px;
+            height: 34px;
+            background-color: #ccc;
+            border-radius: 34px;
+            cursor: pointer;
+        }
+        .language-toggle-slider {
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            top: 4px;
+            left: 4px;
+            transition: 0.4s;
+        }
+        .language-toggle input:checked + .language-toggle-slider {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+    <div class="container mx-auto max-w-3xl p-4">
+        <!-- 语言切换 -->
+        <div class="flex justify-end mb-4">
+            <label class="flex items-center cursor-pointer">
+                <span class="mr-2">EN</span>
+                <div class="language-toggle relative">
+                    <input 
+                        type="checkbox" 
+                        id="languageToggle" 
+                        class="hidden"
+                    >
+                    <div class="language-toggle-slider"></div>
+                </div>
+                <span class="ml-2">中</span>
+            </label>
+        </div>
+
+        <!-- 主内容 -->
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h1 
+                id="mainTitle" 
+                class="text-4xl font-bold text-center mb-4 text-blue-600"
+            >
+                Playit: Your Gaming Universe
+            </h1>
+
+            <p 
+                id="siteDescription" 
+                class="text-center text-gray-600 mb-6"
+            >
+                Your ultimate destination for free online games
+            </p>
+
+            <!-- 游戏区域 -->
+            <div class="mb-6">
+                <h2 
+                    id="gameTitle" 
+                    class="text-2xl font-semibold text-center mb-4"
+                >
+                    Play Count Masters
+                </h2>
+
+                <div class="aspect-video">
+                    <iframe 
+                        src="https://games.crazygames.com/en_US/count-masters-stickman-games/index.html?skipPrerollFirstSessionExp25=true&v=1.326" 
+                        class="w-full h-full rounded-lg"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+
+            <!-- 游戏描述 -->
+            <div>
+                <h3 
+                    id="gameDescriptionTitle" 
+                    class="text-xl font-semibold mb-2"
+                >
+                    About the Game
+                </h3>
+                <p 
+                    id="gameDescription" 
+                    class="text-gray-700"
+                >
+                    Count Masters is an exciting stickman running game where you lead a crowd of stickmen through challenging obstacles. 
+                    Grow your team, overcome barriers, and compete against other stickman armies in this thrilling action-packed game!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 语言内容配置
+        const languageContent = {
+            en: {
+                mainTitle: 'Playit: Your Gaming Space',
+                siteDescription: 'Your ultimate destination for free online games',
+                gameTitle: 'Play Count Masters',
+                gameDescriptionTitle: 'About the Game',
+                gameDescription: 'Count Masters is an exciting stickman running game where you lead a crowd of stickmen through challenging obstacles. Grow your team, overcome barriers, and compete against other stickman armies in this thrilling action-packed game!'
+            },
+            zh: {
+                mainTitle: 'Playit：你的游戏空间',
+                siteDescription: '免费在线游戏的终极目的地',
+                gameTitle: '玩转火柴人大作战',
+                gameDescriptionTitle: '关于游戏',
+                gameDescription: 'Count Masters 是一款激动人心的火柴人跑步游戏，你将引领一群火柴人穿越充满挑战的障碍。扩大你的团队，克服障碍，在这个充满动作的游戏中与其他火柴人军队展开竞争！'
+            }
+        };
+
+        // 语言切换函数
+        function toggleLanguage() {
+            const toggle = document.getElementById('languageToggle');
+            const lang = toggle.checked ? 'zh' : 'en';
+            const content = languageContent[lang];
+
+            // 更新页面文案
+            document.getElementById('mainTitle').textContent = content.mainTitle;
+            document.getElementById('siteDescription').textContent = content.siteDescription;
+            document.getElementById('gameTitle').textContent = content.gameTitle;
+            document.getElementById('gameDescriptionTitle').textContent = content.gameDescriptionTitle;
+            document.getElementById('gameDescription').textContent = content.gameDescription;
+
+            // 更新页面语言属性
+            document.documentElement.lang = lang;
+        }
+
+        // 添加事件监听器
+        document.getElementById('languageToggle').addEventListener('change', toggleLanguage);
+    </script>
+</body>
+</html>
