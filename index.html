@@ -42,7 +42,7 @@
 
         .language-toggle {
             position: relative;
-            width: 50px;
+            width: 60px;  
             height: 34px;
             background-color: #2a1a3a;
             border-radius: 34px;
@@ -51,6 +51,8 @@
             display: flex;  
             align-items: center;  
             justify-content: center;  
+            overflow: hidden;
+            padding: 2px;  /* 添加内边距 */
         }
 
         .language-toggle-slider {
@@ -64,7 +66,7 @@
         }
 
         .language-toggle input:checked + .language-toggle-slider {
-            transform: translateX(22px);  
+            transform: translateX(28px);  /* 微调平移距离 */
             background: linear-gradient(135deg, #00bfff, #1e90ff);
         }
 
